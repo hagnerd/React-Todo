@@ -5,7 +5,7 @@ import "./Todo.css";
 
 export default function Todo({ task, completed, handleClick }) {
   return (
-    <li className="todo-item">
+    <li className="todo-item shadow">
       <button
         onClick={handleClick}
         data-taskcompleted={completed}
