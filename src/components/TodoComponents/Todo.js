@@ -1,10 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./Todo.css";
+
 export default function Todo({ task, completed, handleClick }) {
   return (
-    <li onClick={handleClick} data-taskcompleted={completed}>
-      {task}
+    <li className="todo-item">
+      <button
+        onClick={handleClick}
+        data-taskcompleted={completed}
+        className={completed ? "completed" : ""}
+      >
+        {task}
+      </button>
     </li>
   );
 }

@@ -1,0 +1,20 @@
+.todo-item {
+  border-radius: 4px;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  width: 98%;
+}
+
+.todo-item button {
+  cursor: pointer;
+  font-size: 1.4rem;
+  background-color: initial;
+  border: none;
+  width: 100%;
+  color: #4a556a;
+  text-align: start;
+}
+
+.completed {
+  text-decoration: line-through wavy #ff4a2a;
+}
