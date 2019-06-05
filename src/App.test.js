@@ -36,3 +36,26 @@ test("users should be able to toggle a todo", () => {
   fireEvent.click(task);
   expect(task.dataset.taskcompleted).toEqual("false");
 });
+
+test("user should be able to clear completed todos", () => {
+  const { getByLabelText, getByText, queryByText } = render(<App />);
+
+  const input = getByLabelText("New task input");
+
+  fireEvent.change(input, { target: { value: "task 1" } });
+  fireEvent.click(getByText("Add Todo"));
+
+  fireEvent.change(input, { target: { value: "task 2" } });
+  fireEvent.click(getByText("Add Todo"));
+
+  fireEvent.change(input, { target: { value: "task 2" } });
+  fireEvent.click(getByText("Add Todo"));
+
+  const taskOne = getByText("task 1");
+  fireEvent.click(taskOne);
+
+  const clearCompletedBtn = getByText("Clear Completed");
+  fireEvent.click(clearCompletedBtn);
+
+  expect(queryByText("task 1")).toEqual(null);
+});

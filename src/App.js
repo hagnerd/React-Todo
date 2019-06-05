@@ -24,7 +24,9 @@ class App extends React.Component {
   };
 
   clearCompleted = () => {
-    console.log("To do later");
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(todo => todo.completed === false)
+    }));
   };
 
   toggleTodo = id => {
