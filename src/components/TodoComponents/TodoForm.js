@@ -38,12 +38,18 @@ export default class TodoForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit} className="todo-form">
         <div className="todo-form--row">
-          <input
-            className="todo-input"
-            value={this.state.inputValue}
-            aria-label="New task input"
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label className="todo--input-label" htmlFor="new-todo-input">
+              New todo:
+            </label>
+            <input
+              id="new-todo-input"
+              className="todo-input"
+              value={this.state.inputValue}
+              onChange={this.handleChange}
+              placeholder="enter a new todo"
+            />
+          </div>
           <button className="todo-form-button" type="submit">
             Add Todo
           </button>

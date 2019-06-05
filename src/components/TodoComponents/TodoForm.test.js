@@ -11,7 +11,7 @@ const propFac = props => ({
 });
 
 const defaultProps = propFac();
-const label = "New task input";
+const label = "New todo:";
 
 test("it should render", () => {
   const { getByLabelText } = render(<TodoForm {...defaultProps} />);

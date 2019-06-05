@@ -8,7 +8,7 @@ afterEach(cleanup);
 test("users should be able to enter new todos", () => {
   const { getByLabelText, getByText } = render(<App />);
 
-  const input = getByLabelText("New task input");
+  const input = getByLabelText("New todo:");
   expect(input.value).toEqual("");
 
   fireEvent.change(input, { target: { value: "task 1" } });
@@ -20,7 +20,7 @@ test("users should be able to enter new todos", () => {
 test("users should be able to toggle a todo", () => {
   const { getByLabelText, getByText } = render(<App />);
 
-  const input = getByLabelText("New task input");
+  const input = getByLabelText("New todo:");
 
   fireEvent.change(input, { target: { value: "task 1" } });
   fireEvent.click(getByText("Add Todo"));
@@ -40,7 +40,7 @@ test("users should be able to toggle a todo", () => {
 test("user should be able to clear completed todos", () => {
   const { getByLabelText, getByText, queryByText } = render(<App />);
 
-  const input = getByLabelText("New task input");
+  const input = getByLabelText("New todo:");
 
   fireEvent.change(input, { target: { value: "task 1" } });
   fireEvent.click(getByText("Add Todo"));
