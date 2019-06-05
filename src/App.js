@@ -2,6 +2,8 @@ import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 
+import "./App.css";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,6 @@ class App extends React.Component {
 
   toggleTodo = id => {
     const todoIndex = this.state.todos.findIndex(todo => todo.id === id);
-
     this.setState(prevState => ({
       todos: [
         ...prevState.todos.slice(0, todoIndex),
@@ -46,12 +47,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <TodoList tasks={this.state.todos} toggleTodo={this.toggleTodo} />
+      <div className="app-container">
         <TodoForm
           handleSubmit={this.addTodo}
           clearCompleted={this.clearCompleted}
         />
+        <TodoList tasks={this.state.todos} toggleTodo={this.toggleTodo} />
       </div>
     );
   }
