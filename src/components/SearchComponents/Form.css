@@ -1,0 +1,25 @@
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-size: 1.5rem;
+  color: #4a556a;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 620px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  div.search-input--group {
+    width: 100%;
+  }
+
+  .search-btn {
+    margin: 20px auto 0 auto;
+    width: 100%;
+  }
+}
