@@ -67,7 +67,7 @@ class App extends React.Component {
   };
 
   filterTodos = () => {
-    const regex = new RegExp(`${this.state.search}`);
+    const regex = new RegExp(`${this.state.search}`, "i");
     return this.state.todos.filter(todo => regex.test(todo.task));
   };
 
