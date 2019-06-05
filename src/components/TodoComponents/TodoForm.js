@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import Input from "../FormComponents/Input";
+import Button from "../FormComponents/Button";
 import "./TodoForm.css";
 
 export default class TodoForm extends React.Component {
@@ -36,31 +39,31 @@ export default class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="todo-form">
+      <form onSubmit={this.handleSubmit} className="todo-form card shadow">
         <div className="todo-form--row">
           <div className="form-group">
             <label className="todo--input-label" htmlFor="new-todo-input">
               New todo:
             </label>
-            <input
+            <Input
               id="new-todo-input"
               className="todo-input"
               value={this.state.inputValue}
-              onChange={this.handleChange}
+              handleChange={this.handleChange}
               placeholder="enter a new todo"
             />
           </div>
-          <button className="todo-form-button" type="submit">
+          <Button className="btn-default todo-form-button" type="submit">
             Add Todo
-          </button>
+          </Button>
         </div>
-        <button
-          className="todo-form-button"
+        <Button
+          className="btn-default todo-form-button"
           type="button"
-          onClick={this.props.clearCompleted}
+          handleClick={this.props.clearCompleted}
         >
           Clear Completed
-        </button>
+        </Button>
       </form>
     );
   }

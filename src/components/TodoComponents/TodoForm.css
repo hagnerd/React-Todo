@@ -1,8 +1,7 @@
-.todo-input {
-  padding: 10px 15px;
-  border-radius: 4px;
-  border: 2px solid #656565;
-  font-size: 1.2rem;
+.todo--input-label {
+  font-size: 1.5rem;
+  color: #4a556a;
+  margin-bottom: 10px;
 }
 
 .todo-form {
@@ -18,22 +17,8 @@
   align-items: center;
 }
 
-.todo-form-button {
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  border: 2px solid #6b71ff;
-  background-color: #6b71ff;
-  color: white;
-  padding: 15px 30px;
-}
-
-.todo-form-button:hover {
-  background-color: #2529ff;
-}
-
 .todo-form-button[type="submit"] {
-  margin: 0 auto;
+  margin: 0 0 0 auto;
   align-self: flex-end;
 }
 
@@ -44,14 +29,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  width: 50%
-}
-
-
-.todo--input-label {
-  font-size: 1.5rem;
-  color: #4a556a;
-  margin-bottom: 10px;
+  width: 70%
 }
 
 @media(max-width: 620px) {

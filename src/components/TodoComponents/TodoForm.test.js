@@ -35,10 +35,3 @@ test("a user should be able to use the form", () => {
 
   expect(input.value).toEqual("");
 });
-
-/*
- * TODO:
- *
- * test("a user should be able to clear completed tasks", () => {});
- *
- * */
