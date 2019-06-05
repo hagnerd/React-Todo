@@ -11,10 +11,10 @@ class App extends React.Component {
     };
   }
 
-  addTodo = task => {
+  addTodo = (task, id = Date.now()) => {
     const newTask = {
       task,
-      id: Date.now(),
+      id,
       completed: false
     };
 
@@ -27,10 +27,25 @@ class App extends React.Component {
     console.log("To do later");
   };
 
+  toggleTodo = id => {
+    const todoIndex = this.state.todos.findIndex(todo => todo.id === id);
+
+    this.setState(prevState => ({
+      todos: [
+        ...prevState.todos.slice(0, todoIndex),
+        {
+          ...prevState.todos[todoIndex],
+          completed: !prevState.todos[todoIndex].completed
+        },
+        ...prevState.todos.slice(todoIndex + 1)
+      ]
+    }));
+  };
+
   render() {
     return (
       <div>
-        <TodoList tasks={this.state.todos} />
+        <TodoList tasks={this.state.todos} toggleTodo={this.toggleTodo} />
         <TodoForm
           handleSubmit={this.addTodo}
           clearCompleted={this.clearCompleted}

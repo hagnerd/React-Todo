@@ -7,6 +7,7 @@ const propFac = props => ({
   task: "Mow the lawn",
   id: 1,
   completed: false,
+  handleClick: jest.fn(),
   ...props
 });
 

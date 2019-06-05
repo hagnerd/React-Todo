@@ -8,6 +8,7 @@ const propFac = props => ({
     { task: "cook dinner", id: 2, completed: false },
     { task: "take down the trash", id: 3, completed: false }
   ],
+  toggleTodo: jest.fn(),
   ...props
 });
 
