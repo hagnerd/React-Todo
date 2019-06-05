@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./TodoForm.css";
 
 export default class TodoForm extends React.Component {
   constructor(props) {
@@ -35,14 +36,23 @@ export default class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          value={this.state.inputValue}
-          aria-label="New task input"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Add Todo</button>
-        <button type="button" onClick={this.props.clearCompleted}>
+      <form onSubmit={this.handleSubmit} className="todo-form">
+        <div className="todo-form--row">
+          <input
+            className="todo-input"
+            value={this.state.inputValue}
+            aria-label="New task input"
+            onChange={this.handleChange}
+          />
+          <button className="todo-form-button" type="submit">
+            Add Todo
+          </button>
+        </div>
+        <button
+          className="todo-form-button"
+          type="button"
+          onClick={this.props.clearCompleted}
+        >
           Clear Completed
         </button>
       </form>
