@@ -1,4 +1,5 @@
 import React from "react";
+import matchSorter from "match-sorter";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import SearchForm from "./components/SearchComponents/Form";
@@ -67,8 +68,7 @@ class App extends React.Component {
   };
 
   filterTodos = () => {
-    const regex = new RegExp(`${this.state.search}`, "i");
-    return this.state.todos.filter(todo => regex.test(todo.task));
+    return matchSorter(this.state.todos, this.state.search, { keys: ["task"] });
   };
 
   handleSearchChange = event => {
