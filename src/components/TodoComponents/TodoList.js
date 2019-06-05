@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Todo from "./Todo";
+import "./TodoList.css";
 
 export default function TodoList({ tasks, toggleTodo }) {
   return (
-    <ul>
+    <ul className="todo-list">
       {tasks.map(task => (
         <Todo key={task.id} {...task} handleClick={() => toggleTodo(task.id)} />
       ))}
