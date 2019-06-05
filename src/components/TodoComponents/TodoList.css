@@ -1,4 +1,11 @@
 .todo-list {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+}
+
+.todo-list > * {
+  margin-bottom: 25px;
+  width: 99%;
 }
