@@ -1,0 +1,14 @@
+.btn-default {
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 2px solid #6b71ff;
+  background-color: #6b71ff;
+  color: white;
+  padding: 15px 30px;
+  min-height: 23px;
+}
+
+.btn-default:hover {
+  background-color: #2529ff;
+}
