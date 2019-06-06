@@ -86,15 +86,21 @@ test("should persist data", () => {
 });
 
 test("user should be able to filter todos", () => {
+  const tasks = ["task 1", "task 2", "also task 2"];
   const container = render(<App />);
 
   const todoInput = container.getByLabelText("New todo:");
   const submitBtn = container.getByText("Add Todo");
   const searchInput = container.getByLabelText("Search Todos:");
+  const clearBtn = container.getByText("Clear Search");
 
-  addTodos(todoInput, submitBtn, ["task 1", "task 2", "also task 2"]);
+  addTodos(todoInput, submitBtn, tasks);
   fireEvent.change(searchInput, { target: { value: "task 2" } });
 
   expect(container.getAllByText(/task 2/g).length).toEqual(2);
   expect(container.queryByText("task 1")).toEqual(null);
+
+  /* clearing the search should result in all being visible */
+  fireEvent.click(clearBtn);
+  tasks.forEach(task => expect(container.getByText(task)).toBeTruthy());
 });

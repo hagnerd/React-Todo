@@ -29,7 +29,7 @@ export default function Form({ searchValue, handleChange, handleClear }) {
       </div>
       <Button
         className="btn-default align-self-end ml-auto search-btn"
-        type="rest"
+        type="reset"
         handleClick={handleClear}
       >
         Clear Search
