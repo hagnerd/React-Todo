@@ -54,16 +54,10 @@ class App extends React.Component {
   };
 
   toggleTodo = id => {
-    const todoIndex = this.state.todos.findIndex(todo => todo.id === id);
     this.setState(prevState => ({
-      todos: [
-        ...prevState.todos.slice(0, todoIndex),
-        {
-          ...prevState.todos[todoIndex],
-          completed: !prevState.todos[todoIndex].completed
-        },
-        ...prevState.todos.slice(todoIndex + 1)
-      ]
+      todos: prevState.todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
     }));
   };
 
