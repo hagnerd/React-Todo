@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 
-import Todo from "./Todo";
+import Todo, { TodoProps } from "./Todo";
 
-const propFac = props => ({
+const propFac = (props?: TodoProps): TodoProps => ({
   task: "Mow the lawn",
   id: 1,
   completed: false,

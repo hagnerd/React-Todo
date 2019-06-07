@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 
 import "./Todo.css";
 
-export default function Todo({ task, completed, handleClick }) {
+export interface TodoProps {
+  task: string;
+  id: number;
+  completed: boolean;
+  handleClick: () => void;
+}
+
+export default function Todo({ task, completed, handleClick }: TodoProps) {
   return (
     <li className="todo-item shadow">
       <button

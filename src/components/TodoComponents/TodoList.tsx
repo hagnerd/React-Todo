@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 import Todo from "./Todo";
 import "./TodoList.css";
 
-export default function TodoList({ tasks, toggleTodo }) {
+export interface TodoListProps {
+  tasks: Array<{ task: string; id: number; completed: boolean }>;
+  toggleTodo: (id: number) => void;
+}
+
+export default function TodoList({ tasks, toggleTodo }: TodoListProps) {
   return (
     <ul className="todo-list">
       {tasks.map(task => (

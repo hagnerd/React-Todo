@@ -8,7 +8,11 @@ afterEach(() => {
   cleanup();
 });
 
-const addTodos = (input, submitBtn, arrayOfNewTodoValues) =>
+const addTodos = (
+  input: HTMLInputElement,
+  submitBtn: HTMLButtonElement,
+  arrayOfNewTodoValues: string[]
+) =>
   arrayOfNewTodoValues.forEach(value => {
     fireEvent.change(input, { target: { value } });
     fireEvent.click(submitBtn);
@@ -17,7 +21,7 @@ const addTodos = (input, submitBtn, arrayOfNewTodoValues) =>
 test("users should be able to enter new todos", () => {
   const { getByLabelText, getByText } = render(<App />);
 
-  const input = getByLabelText("New todo:");
+  const input = getByLabelText("New todo:") as HTMLInputElement;
   expect(input.value).toEqual("");
 
   fireEvent.change(input, { target: { value: "task 1" } });
@@ -49,8 +53,8 @@ test("users should be able to toggle a todo", () => {
 test("user should be able to clear completed todos", () => {
   const { getByLabelText, getByText, queryByText } = render(<App />);
 
-  const input = getByLabelText("New todo:");
-  const submitBtn = getByText("Add Todo");
+  const input = getByLabelText("New todo:") as HTMLInputElement;
+  const submitBtn = getByText("Add Todo") as HTMLButtonElement;
 
   addTodos(input, submitBtn, ["task 1", "task 2", "task 3"]);
 
@@ -71,8 +75,8 @@ test("should persist data", () => {
   const tasks = ["task 1", "task 2", "task 3"];
   const firstRender = render(<App />);
 
-  const todoInput = firstRender.getByLabelText("New todo:");
-  const submitBtn = firstRender.getByText("Add Todo");
+  const todoInput = firstRender.getByLabelText("New todo:") as HTMLInputElement;
+  const submitBtn = firstRender.getByText("Add Todo") as HTMLButtonElement;
 
   addTodos(todoInput, submitBtn, tasks);
 
@@ -89,10 +93,12 @@ test("user should be able to filter todos", () => {
   const tasks = ["task 1", "task 2", "also task 2"];
   const container = render(<App />);
 
-  const todoInput = container.getByLabelText("New todo:");
-  const submitBtn = container.getByText("Add Todo");
-  const searchInput = container.getByLabelText("Search Todos:");
-  const clearBtn = container.getByText("Clear Search");
+  const todoInput = container.getByLabelText("New todo:") as HTMLInputElement;
+  const submitBtn = container.getByText("Add Todo") as HTMLButtonElement;
+  const searchInput = container.getByLabelText(
+    "Search Todos:"
+  ) as HTMLInputElement;
+  const clearBtn = container.getByText("Clear Search") as HTMLButtonElement;
 
   addTodos(todoInput, submitBtn, tasks);
   fireEvent.change(searchInput, { target: { value: "task 2" } });

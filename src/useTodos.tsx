@@ -1,11 +1,33 @@
 import React from "react";
 import useLocalStorage from "./useLocalStorage";
 
-const initialState = {
-  todos: []
+export interface Todo {
+  task: string;
+  id: number;
+  completed: boolean;
+}
+
+interface State {
+  todos: Array<Todo>;
+}
+
+type Payload<M = void> = M extends void ? void : { payload: M };
+
+type Action<A, M = void, P = Payload<M>> = P extends void
+  ? { type: A }
+  : { type: A } & P;
+
+type ActionType =
+  | Action<"CLEAR_COMPLETED">
+  | Action<"HYDRATE_TODOS", Array<Todo>>
+  | Action<"ADD_TODO", string>
+  | Action<"TOGGLE_TODO", number>;
+
+const initialState: State = {
+  todos: [] as Array<Todo>
 };
 
-function todosReducer(state, action) {
+function todosReducer(state: State, action: ActionType): State {
   switch (action.type) {
     case "HYDRATE_TODOS":
       return {
@@ -39,8 +61,9 @@ function todosReducer(state, action) {
   }
 }
 
-export default function useTodos(init = initialState) {
+export default function useTodos(init: State = initialState) {
   const [state, dispatch] = React.useReducer(todosReducer, init);
+
   const setter = React.useCallback(
     payload => dispatch({ type: "HYDRATE_TODOS", payload }),
     [dispatch]
@@ -50,8 +73,8 @@ export default function useTodos(init = initialState) {
 
   return {
     todos: state.todos,
-    addTodo: todo => dispatch({ type: "ADD_TODO", payload: todo }),
-    toggleTodo: id => dispatch({ type: "TOGGLE_TODO", payload: id }),
+    addTodo: (todo: string) => dispatch({ type: "ADD_TODO", payload: todo }),
+    toggleTodo: (id: number) => dispatch({ type: "TOGGLE_TODO", payload: id }),
     clearCompletedTodos: () => dispatch({ type: "CLEAR_COMPLETED" })
   };
 }

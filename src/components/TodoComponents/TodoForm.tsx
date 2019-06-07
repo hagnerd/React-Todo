@@ -5,8 +5,22 @@ import Input from "../FormComponents/Input";
 import Button from "../FormComponents/Button";
 import "./TodoForm.css";
 
-export default class TodoForm extends React.Component {
-  constructor(props) {
+export interface TodoFormProps {
+  handleSubmit: (input: string) => void;
+  clearCompleted: () => void;
+}
+
+const initialState = {
+  inputValue: ""
+};
+
+type TodoFormState = typeof initialState;
+
+export default class TodoForm extends React.Component<
+  TodoFormProps,
+  TodoFormState
+> {
+  constructor(props: TodoFormProps) {
     super(props);
 
     this.state = {
@@ -19,7 +33,7 @@ export default class TodoForm extends React.Component {
     clearCompleted: PropTypes.func.isRequired
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     this.props.handleSubmit(this.state.inputValue);
@@ -29,7 +43,7 @@ export default class TodoForm extends React.Component {
     });
   };
 
-  handleChange = event => {
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
     this.setState({

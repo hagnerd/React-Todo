@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import TodoList from "./TodoList";
 
-const propFac = props => ({
+import TodoList, { TodoListProps } from "./TodoList";
+
+const propFac = (props?: TodoListProps) => ({
   tasks: [
     { task: "mow the lawn", id: 1, completed: false },
     { task: "cook dinner", id: 2, completed: false },

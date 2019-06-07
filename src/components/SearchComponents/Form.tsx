@@ -6,11 +6,21 @@ import Button from "../FormComponents/Button";
 
 import "./Form.css";
 
-function preventFormDefault(event) {
+function preventFormDefault(event: React.FormEvent) {
   event.preventDefault();
 }
 
-export default function Form({ searchValue, handleChange, handleClear }) {
+interface FormProps {
+  searchValue: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClear: () => void;
+}
+
+export default function Form({
+  searchValue,
+  handleChange,
+  handleClear
+}: FormProps) {
   return (
     <form className="search-form card shadow" onSubmit={preventFormDefault}>
       <div className="flex flex-col w-70 search-input--group">

@@ -1,6 +1,9 @@
 import React from "react";
 
-export default function useHydrate(name, setter) {
+export default function useHydrate<T>(
+  name: string,
+  setter: (value: T) => void
+) {
   React.useEffect(() => {
     let initialValue = window.localStorage.getItem(name);
 

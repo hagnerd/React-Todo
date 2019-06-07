@@ -1,10 +1,11 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
-import TodoForm from "./TodoForm";
+
+import TodoForm, { TodoFormProps } from "./TodoForm";
 
 afterEach(cleanup);
 
-const propFac = props => ({
+const propFac = (props?: TodoFormProps) => ({
   handleSubmit: jest.fn(),
   clearCompleted: jest.fn(),
   ...props
@@ -22,7 +23,7 @@ test("it should render", () => {
 test("a user should be able to use the form", () => {
   const { getByLabelText, getByText } = render(<TodoForm {...defaultProps} />);
 
-  const input = getByLabelText(label);
+  const input = getByLabelText(label) as HTMLInputElement;
 
   fireEvent.change(input, { target: { value: "cool" } });
 
